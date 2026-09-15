@@ -11,6 +11,7 @@ tags:
   - mutex
   - nodejs
 draft: false
+appUrl: https://api.redis-semaphores.devman.cc
 ---
 # Where do we start?
 We can start by learning what a **thread** is—the smallest unit of execution within a process, allowing a program to perform multiple operations simultaneously.
