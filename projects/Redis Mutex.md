@@ -44,7 +44,7 @@ The clients make the order through a screen and this will enqueue the order in i
 - Redis
 ### Libraries
 - ioredis
-- redis-semaphores
+- redis-semaphore
 
 As a first step, let's configure our client by initializing `Redis` with the host and port where it will be exposed. Also, define the resources that are going to be shared across the processes.
 
