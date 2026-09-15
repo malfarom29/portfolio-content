@@ -10,7 +10,7 @@ tags:
   - concurrency
   - mutex
   - nodejs
-draft: false
+draft: true
 ---
 # Where do we start?
 We can start by learning what a **thread** is—the smallest unit of execution within a process, allowing a program to perform multiple operations simultaneously.

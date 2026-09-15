@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "882475acbabfc5b7",
+        "id": "a6a734b24782bf21",
         "type": "tabs",
         "children": [
           {
-            "id": "a7003a231b311c3f",
+            "id": "25f632a3e0de7392",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -169,13 +169,23 @@
               "icon": "lucide-list",
               "title": "Outline"
             }
+          },
+          {
+            "id": "da10e30c4a9aec4c",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -185,25 +195,25 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a7003a231b311c3f",
+  "active": "25f632a3e0de7392",
   "lastOpenFiles": [
-    "Pasted image 20260914170649.png",
+    "Pasted image 20260914163058.png",
     "projects/Redis Mutex.md",
     "Pasted image 20260914165322.png",
-    "Pasted image 20260914163058.png",
+    "projects/Medallion Architecture.md",
+    "Pasted image 20260914170649.png",
     "Pasted image 20260914163032.png",
     "Pasted image 20260914161247.png",
     "Pasted image 20260914120200.png",
     "Pasted image 20260914121150.png",
     "Pasted image 20260914160925.png",
-    "projects/Medallion Architecture.md",
     "Pasted image 20260914110740.png",
     "projects/Pasted image 20260914110740.png",
     "projects/__tmp-image-test.md",
-    "Pasted image 20260914000015.png",
     "Untitled.base",
     "2026-09-13.md",
     "blog/hola-mundo.md",

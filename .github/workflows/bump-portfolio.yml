@@ -1,0 +1,57 @@
+# Al pushear contenido, actualiza el puntero del submodulo `vault` en el repo
+# del sitio (portfolio-v2). Ese commit es el que dispara el deploy en Vercel:
+# un submodulo fija un commit exacto, no sigue la rama, asi que sin este bump
+# el sitio se quedaria mostrando la version vieja del vault.
+name: Bump vault en portfolio-v2
+
+on:
+  push:
+    branches: [main]
+    # La config de Obsidian cambia sola todo el tiempo; no amerita un deploy.
+    paths-ignore:
+      - '.obsidian/**'
+  workflow_dispatch: # permite dispararlo a mano desde la pestaña Actions
+
+# Si se pushea varias veces seguidas, deja solo el ultimo bump.
+concurrency:
+  group: bump-portfolio
+  cancel-in-progress: true
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar el repo del sitio
+        uses: actions/checkout@v6
+        with:
+          repository: malfarom29/portfolio-v2
+          token: ${{ secrets.PORTFOLIO_REPO_TOKEN }}
+          # Sin submodules: el puntero se actualiza sin bajar el contenido.
+          submodules: false
+          path: site
+
+      - name: Apuntar el submodulo al commit nuevo
+        working-directory: site
+        env:
+          CONTENT_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          if ! git ls-files --stage vault | grep -q '^160000'; then
+            echo "::error::'vault' no esta registrado como submodulo en portfolio-v2."
+            echo "Commitea primero el submodulo alla: git add .gitmodules vault && git commit"
+            exit 1
+          fi
+
+          git update-index --cacheinfo "160000,${CONTENT_SHA},vault"
+
+          if git diff --cached --quiet; then
+            echo "El puntero ya esta en ${CONTENT_SHA}; no hay nada que hacer."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "content: bump vault a ${CONTENT_SHA:0:7}"
+          git push
+          echo "Puntero actualizado a ${CONTENT_SHA}."
