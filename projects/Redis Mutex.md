@@ -147,4 +147,6 @@ try {
 }
 ```
 
-This is how I've worked with Redis as a *Mutex* to control usage of resources in a distributed system.
+**One caveat worth mentioning:** this approach relies on a single Redis instance to coordinate the lock, which means that instance becomes a single point of failure. If it goes down, no process can acquire or release locks until it's back up. For a toy example or a low-stakes use case this is usually fine, but if you're protecting something critical in production, you'll want to look into [Redlock](https://redis.io/docs/latest/develop/use/patterns/distributed-locks/), Redis's own algorithm for distributed locking across multiple independent Redis nodes, which trades a bit of complexity for much better fault tolerance.
+
+This way, you can work with Redis as a *Mutex* to control usage of resources in a distributed system.
