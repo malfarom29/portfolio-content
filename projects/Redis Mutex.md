@@ -13,7 +13,7 @@ tags:
 draft: false
 appUrl: https://api.redis-semaphores.devman.cc
 ---
-# Where do we start?
+# Where do we start?????????
 We can start by learning what a **thread** is—the smallest unit of execution within a process, allowing a program to perform multiple operations simultaneously.
 
 Threads share memory and resources (files and data) with other threads within the same process, allowing efficient communication between them; but it also adds complexity to resource management to avoid conflicts. That's where *Mutex* comes into action.
